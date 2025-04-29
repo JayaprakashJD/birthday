@@ -1,68 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Birthday!</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('c5f71cfb-723b-4282-8337-a171ff3a28b1.webp') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            padding: 50px 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            margin: 50px auto;
-            border-radius: 20px;
-            width: 80%;
-            max-width: 700px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        h1 {
-            font-size: 3em;
-            color: #d17a00;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-        }
-        img {
-            width: 300px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-        }
-        .decor {
-            font-size: 2em;
-            margin: 20px 0;
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        .footer {
-            margin-top: 40px;
-            font-size: 1em;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 800% 800%;
+      animation: gradientShift 20s ease infinite;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 40px 20px;
+      background-color: rgba(255, 255, 255, 0.95);
+      margin: 40px auto;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #d17a00;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 250px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      background-color: #ffa500;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #e69500;
+    }
+
+    video {
+      display: none;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 1em;
+      color: #666;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ffcc00;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Print style for A4 */
+    @media print {
+      @page {
+        size: A4;
+        margin: 20mm;
+      }
+
+      body {
+        background: white !important;
+        animation: none !important;
+      }
+
+      .confetti, button, video {
+        display: none !important;
+      }
+
+      .container {
+        box-shadow: none !important;
+        background-color: white !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="decor">🌾🎉🌾</div>
-        <h1>Happy Birthday, Durga!</h1>
-        <img src="https://github.com/JayaprakashJD/birthday/blob/eefc7c967d6c03c5f1090fe2b6466b77df92a6c8/image.png" alt="Birthday Celebration">
-        <p>Wishing you an amazing birthday filled with joy, laughter, and dreams come true! 🌟</p>
-        <p>Have a beautiful celebration! 🎂🎈</p>
-        <div class="decor">🌾🎉🌾</div>
-        <div class="footer">Created by your friend for your special day!</div>
-    </div>
+  <script>
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
+      confetti.style.backgroundColor = ['#ff0', '#f0f', '#0ff', '#f90', '#0f0'][Math.floor(Math.random() * 5)];
+      confetti.style.width = confetti.style.height = 5 + Math.random() * 10 + 'px';
+      document.body.appendChild(confetti);
+    }
+  </script>
+
+  <div class="container">
+    <h1>Happy Birthday, Durga!</h1>
+    <img src="https://github.com/JayaprakashJD/birthday/blob/eefc7c967d6c03c5f1090fe2b6466b77df92a6c8/image.png?raw=true" alt="Birthday Celebration">
+    <p>Wishing you an amazing birthday filled with joy, laughter, and dreams come true! 🌟</p>
+    <p>Have a beautiful celebration! 🎂🎈</p>
+
+    <button onclick="playBirthdayVideo()">Play Surprise Video 🎥</button>
+    <video id="birthdayVideo" controls>
+      <source src="https://raw.githubusercontent.com/JayaprakashJD/birthday/main/assets/birthday_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="footer">Created by your friend for your special day!</div>
+  </div>
+
+  <script>
+    function playBirthdayVideo() {
+      const video = document.getElementById("birthdayVideo");
+      video.style.display = "block";
+      video.play();
+    }
+  </script>
 </body>
 </html>
