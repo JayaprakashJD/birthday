@@ -51,30 +51,7 @@
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       margin-bottom: 30px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 1.1em;
-      background-color: #ffa500;
-      border: none;
-      border-radius: 10px;
-      color: white;
       cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    button:hover {
-      background-color: #e69500;
-    }
-
-    video {
-      display: none;
-      width: 100%;
-      max-width: 600px;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     .footer {
@@ -103,7 +80,6 @@
       }
     }
 
-    /* Print style for A4 */
     @media print {
       @page {
         size: A4;
@@ -115,7 +91,7 @@
         animation: none !important;
       }
 
-      .confetti, button, video {
+      .confetti {
         display: none !important;
       }
 
@@ -137,29 +113,23 @@
       confetti.style.width = confetti.style.height = 5 + Math.random() * 10 + 'px';
       document.body.appendChild(confetti);
     }
+
+    function changeImage() {
+      const image = document.getElementById('birthdayImage');
+      const newSrc = image.src.includes('image.png')
+        ? 'https://github.com/JayaprakashJD/birthday/blob/d0198f1c31783d1e97ad268719915091e6ce52ce/WhatsApp%20Image%202025-04-29%20at%2015.21.14_ae25b0ac.jpg'
+        : 'https://github.com/JayaprakashJD/birthday/blob/eefc7c967d6c03c5f1090fe2b6466b77df92a6c8/image.png?raw=true';
+      image.src = newSrc;
+    }
   </script>
 
   <div class="container">
     <h1>Happy Birthday, Durga!</h1>
-    <img src="https://github.com/JayaprakashJD/birthday/blob/eefc7c967d6c03c5f1090fe2b6466b77df92a6c8/image.png?raw=true" alt="Birthday Celebration">
+    <img id="birthdayImage" src="https://github.com/JayaprakashJD/birthday/blob/eefc7c967d6c03c5f1090fe2b6466b77df92a6c8/image.png?raw=true" alt="Birthday Celebration" onclick="changeImage()">
     <p>Wishing you an amazing birthday filled with joy, laughter, and dreams come true! 🌟</p>
     <p>Have a beautiful celebration! 🎂🎈</p>
 
-    <button onclick="playBirthdayVideo()">Play Surprise Video 🎥</button>
-    <video id="birthdayVideo" controls>
-      <source src="https://youtube.com/shorts/CvYSWzd-F34?feature=shared" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
     <div class="footer">Created by your friend for your special day!</div>
   </div>
-
-  <script>
-    function playBirthdayVideo() {
-      const video = document.getElementById("birthdayVideo");
-      video.style.display = "block";
-      video.play();
-    }
-  </script>
 </body>
 </html>
